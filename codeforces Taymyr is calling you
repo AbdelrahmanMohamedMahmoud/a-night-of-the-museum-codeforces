@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m,z;
+    short NumOfArt=0;
+    cin>>n>>m>>z;
+    for(short i=1; i<=z; i++){
+            if(i%m == i%n){
+                NumOfArt++;
+            }
+        }
+    }
+    cout<<NumOfArt<<endl;
+    
+    return 0;
+    
+    
+}
+
+
+// another solution with time complexity o(n"2)
+#include <iostream>
+using namespace std;
+int main() {
+    int n,m,z;
+    short NumOfArt=0;
+    cin>>n>>m>>z;
+    int j=1;
+    for(short i=1; i*m<=z; i++){
+        for(short j=1; j*n<=z; j++){
+            if(i*m == j*n){
+                NumOfArt++;
+            }
+        }
+    }
+    cout<<NumOfArt<<endl;
+    
+    return 0;
+    
+    
+}
