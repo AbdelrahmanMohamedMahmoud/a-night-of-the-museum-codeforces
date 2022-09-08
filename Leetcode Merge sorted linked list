@@ -1,0 +1,91 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+        
+    
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        
+        if(list1 == NULL && list2!=NULL){
+            return list2;
+        }
+        
+        else if(list2==NULL && list1!=NULL){
+            return list1;
+        }
+        
+          ListNode *l1 = list1;       
+          ListNode *l2 = list2;  
+
+          ListNode * head=NULL;  // head of the new list
+                
+          int val=0;
+        
+         while(l1 && l2){
+             
+             if(l1->val >=l2->val){
+                 val = l2->val;
+                 l2=l2->next;
+             }
+             
+             else{
+                 val = l1->val;
+                 l1 = l1->next;
+                 
+             }
+            
+            
+              ListNode* newNode = new ListNode();
+  
+              newNode->val = val;
+  
+             if(head == NULL) {
+               head = newNode;
+               
+             }
+             else {
+                 
+              ListNode* temp = head;
+                 
+              while(temp->next != NULL){
+                 temp = temp->next;
+              }
+                 
+                 temp->next = newNode;
+                     
+                 
+                 
+             }    
+              
+             
+             if(l1==NULL){
+                 ListNode* n = new ListNode();
+                 n->val = l2->val;
+                 
+                 newNode->next = n;
+             }
+            
+             
+              else if(l2==NULL){
+                 ListNode* n = new ListNode();
+                 n->val = l1->val;
+                 newNode->next = n;
+             }
+            
+             
+         }
+        
+       
+       
+        
+        return head;
+    }
+};
