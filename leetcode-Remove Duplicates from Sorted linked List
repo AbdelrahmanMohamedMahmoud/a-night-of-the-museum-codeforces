@@ -18,7 +18,6 @@ public:
         ListNode*temp1 = head;  
         ListNode*temp2 = head->next;
     
-        int val=0;
         
         while(temp2!=NULL){
             if(temp1->val == temp2->val){
