@@ -1,0 +1,54 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        
+        if(head==NULL){
+            return 0;
+        }
+        ListNode*t=head;
+        
+        int size = 0;
+        
+        
+        while(t!=NULL){
+            size++;
+            t=t->next;
+        }
+        
+        
+        t=head;
+        
+        int*arr=new int[size];
+        
+        
+         int i=0;
+         while(t!=NULL){
+            arr[i]= t->val;
+            t=t->next;
+            i++;
+        }
+        
+        
+        i--;
+        
+        t=head;
+        while(t!=NULL){
+            t->val = arr[i];
+            i--;
+            
+            t = t->next;
+        }
+        
+        return head;
+    }
+};
