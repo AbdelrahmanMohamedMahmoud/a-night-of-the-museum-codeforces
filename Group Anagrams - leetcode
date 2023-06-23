@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Solution
+{
+    public string SortString(string word)
+    {
+        char[] sortedChars = word.ToCharArray();
+        Array.Sort(sortedChars);
+        return new string(sortedChars);
+    }
+
+    public IList<IList<string>> GroupAnagrams(string[] strs)
+    {
+        Dictionary<string, List<string>> wordDictionary = new Dictionary<string, List<string>>();
+
+        foreach (string word in strs)
+        {
+            string sortedWord = SortString(word);
+
+            if (!wordDictionary.ContainsKey(sortedWord))
+            {
+                wordDictionary[sortedWord] = new List<string>();
+            }
+
+            wordDictionary[sortedWord].Add(word);
+        }
+
+        return wordDictionary.Values.ToList<IList<string>>();
+    }
+}
